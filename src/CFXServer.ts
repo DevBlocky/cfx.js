@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import DynamicHelper, { DynamicRaw } from './helpers/DynamicHelper';
 import InfoHelper, { InfoRaw } from './helpers/InfoHelper';
 
 export interface CFXServerOptions {
@@ -52,8 +53,9 @@ export default class CFXServer {
         const x = await this.getPath<InfoRaw>('/info.json');
         return new InfoHelper(x);
     }
-    public getDynamic(): Promise<any> {
-        return this.getPath('/dynamic.json');
+    public async getDynamic(): Promise<DynamicHelper> {
+        const x = await this.getPath<DynamicRaw>('/dynamic.json');
+        return new DynamicHelper(x);
     }
 
     /**
