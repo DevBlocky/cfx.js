@@ -17,7 +17,10 @@ export default function initiate(
     options?: Partial<CFXServerOptions>
 ): CFXServer {
     // combine the default options and the user-provided ones
-    let opts: CFXServerOptions = Object.assign(DEFAULT_OPTIONS, options ?? {});
+    const opts: CFXServerOptions = Object.assign(
+        DEFAULT_OPTIONS,
+        options ?? {}
+    );
 
     // create the CFXServer instance
     return new CFXServer(ip, opts);

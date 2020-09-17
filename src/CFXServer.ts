@@ -21,7 +21,7 @@ export default class CFXServer {
         method: 'GET' | 'POST' = 'GET'
     ): Promise<T> {
         // perform the request
-        let result = (await axios({
+        const result = (await axios({
             url: url.toString(),
             method,
             timeout: this.opts.timeout,

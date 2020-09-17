@@ -36,6 +36,6 @@ export default class DynamicHelper {
      * The max number of clients that can connect to the server
      */
     public get maxNumClients() {
-        return Number.parseInt(this.raw.sv_maxclients);
+        return Number.parseInt(this.raw.sv_maxclients, 10);
     }
 }

@@ -38,14 +38,14 @@ export default class InfoHelper {
      * The max number of clients in the server
      */
     public get maxClientCount(): number {
-        return Number.parseInt(this.raw.vars['sv_maxClients']);
+        return Number.parseInt(this.raw.vars.sv_maxClients, 10);
     }
 
     /**
      * The server's icon, or `null` if not set
      */
     public get icon(): Buffer | null {
-        let icon = this.raw.icon;
+        const icon = this.raw.icon;
         return icon ? Buffer.from(icon, 'base64') : null;
     }
 
@@ -60,7 +60,7 @@ export default class InfoHelper {
      * The current artifact version of the server
      */
     public get artifactVersion(): number | null {
-        let m = this.raw.server.match(/v1\.0\.0\.(\d+)/);
-        return m ? Number.parseInt(m[1]) : null;
+        const m = this.raw.server.match(/v1\.0\.0\.(\d+)/);
+        return m ? Number.parseInt(m[1], 10) : null;
     }
 }
