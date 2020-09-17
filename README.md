@@ -32,7 +32,7 @@ const cfx = require('@blocky/cfx.js').default;
     let server = cfx('http://localhost:3000');
     let resData = await server.getPath('/my_resource');
 
-    console.log(serverInfo.artifactVersion);
+    let { myData } = resData;
 })();
 ```
 
