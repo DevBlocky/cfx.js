@@ -1,0 +1,35 @@
+name: build-lint
+
+on:
+    push:
+        branches:
+            - master
+    pull_request:
+
+jobs:
+    build:
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                os: [ubuntu-latest, windows-latest]
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v1
+            - run: yarn install
+            - run: yarn build
+            - uses: actions/upload-artifact@v2
+              with:
+                  name: build-${{ matrix.os }}
+                  path: |
+                      README.md
+                      package.json
+                      lib/
+                      src/
+
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v1
+            - run: yarn install
+            - run: yarn lint
