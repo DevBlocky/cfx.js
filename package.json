@@ -1,6 +1,6 @@
 {
     "name": "@blocky/cfx.js",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "A simple wrapper for the FiveM/CFX HTTP API",
     "main": "lib/index.js",
     "repository": "https://github.com/blockba5her/cfx.js",
@@ -13,9 +13,7 @@
     ],
     "scripts": {
         "build": "tsc",
-        "lint": "tslint -p tsconfig.json",
-        "prepare": "npm run build",
-        "prepublishOnly": "npm run lint"
+        "lint": "tslint -p tsconfig.json"
     },
     "devDependencies": {
         "@types/node": "^14.10.2",
