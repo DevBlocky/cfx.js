@@ -30,7 +30,7 @@ jobs:
             - run: yarn install
             - run: yarn lint
 
-    publish-npm:
+    publish:
         runs-on: ubuntu-latest
         needs: [build, lint]
         steps:
@@ -39,11 +39,12 @@ jobs:
                   name: npm_pkg
             - uses: actions/setup-node@v1
               with:
+                  registry-url: 'https://npm.pkg.github.com'
                   node-version: '10.x'
             - run: yarn install --prod # install production packages
             # - run: npm publish --access public --registry-url "https://registry.npmjs.org"
             #   env:
             #       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-            - run: yarn publish --access public --registry-url "https://npm.pkg.github.com"
+            - run: yarn publish --access public
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
