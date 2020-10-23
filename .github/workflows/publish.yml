@@ -41,6 +41,9 @@ jobs:
               with:
                   registry-url: 'https://registry.npmjs.org'
             - run: yarn install --prod
-            - run: npm publish --access public
+            - uses: pascalgn/npm-publish-action@v1
+              with:
+                  workspace: '.'
               env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
